@@ -21,8 +21,6 @@ gulp.task('styles', function () {
 });
 
 
-
-
 // CoffeeScript
 gulp.task('coffee', function () {
     return gulp.src(
@@ -133,10 +131,10 @@ gulp.task('watch', ['html', 'bundle', 'connect'], function () {
     // Watch .html files
     gulp.watch('app/*.html', ['html']);
 
-    
+
     // Watch .scss files
     gulp.watch('app/styles/**/*.scss', ['styles']);
-    
+
 
 
     // Watch .jade files
