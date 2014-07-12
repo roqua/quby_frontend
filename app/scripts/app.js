@@ -2,7 +2,7 @@
 
 var React = window.React = require('react'),
     Timer = require("./ui/Timer");
-    mountNode = document.getElementById("app");
+    mountNode = document.getElementById("quby-app");
 
 var TodoList = React.createClass({
   render: function() {
