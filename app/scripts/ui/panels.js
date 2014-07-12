@@ -7,11 +7,38 @@ var Text = React.createClass({
     }
 });
 
+var RadioOption = React.createClass({
+    render: function() {
+        return (
+            <div>
+                <input type="radio" />
+                <label>{this.props.label}</label>
+            </div>
+        );
+    }
+});
+
+var RadioQuestion = React.createClass({
+    render: function() {
+        var createOption = function(option) {
+            return <RadioOption label={option.description} />;
+        };
+
+        return (
+            <div>
+                {this.props.item.options.map(createOption)}
+            </div>
+        )
+    }
+});
+
 var Panel = React.createClass({
     render: function() {
         var createItem = function(item) {
             if (item.class == "Quby::Questionnaires::Entities::Text") {
                 return <Text item={item} />;
+            } else if (item.class == "Quby::Questionnaires::Entities::Questions::RadioQuestion") {
+                return <RadioQuestion item={item} />;
             } else {
                 return <div>Unknown item type #{item.class}</div>;
             };
