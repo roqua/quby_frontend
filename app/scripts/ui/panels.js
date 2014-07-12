@@ -57,16 +57,9 @@ var Panel = React.createClass({
 
 var Panels = React.createClass({
   render: function() {
-    var currentIndex = this.props.index;
-
-    var createPanel = function(panel, idx) {
-        var current = (idx == currentIndex)
-        return <Panel panel={panel} current={current} />;
-    };
-
     return (
       <div className="panels">
-        {this.props.panels.map(createPanel)}
+        <Panel panel={this.props.panels[this.props.index]} />
       </div>
     );
   }
