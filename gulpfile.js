@@ -60,7 +60,6 @@ gulp.task('jade', function () {
 // HTML
 gulp.task('html', function () {
     return gulp.src('app/*.html')
-        .pipe($.useref())
         .pipe(gulp.dest('dist'))
         .pipe($.size())
         .pipe($.connect.reload());
@@ -88,9 +87,6 @@ gulp.task('clean', function () {
 // Bundle
 gulp.task('bundle', ['styles', 'scripts', 'bower'], function(){
     return gulp.src('./app/*.html')
-               .pipe($.useref.assets())
-               .pipe($.useref.restore())
-               .pipe($.useref())
                .pipe(gulp.dest('dist'));
 });
 
@@ -124,27 +120,20 @@ gulp.task('json', function() {
 
 // Watch
 gulp.task('watch', ['html', 'bundle', 'connect'], function () {
-
     // Watch .json files
     gulp.watch('app/scripts/**/*.json', ['json']);
 
     // Watch .html files
     gulp.watch('app/*.html', ['html']);
 
-
     // Watch .scss files
     gulp.watch('app/styles/**/*.scss', ['styles']);
-
-
 
     // Watch .jade files
     gulp.watch('app/template/**/*.jade', ['jade', 'html']);
 
-
-
     // Watch .coffeescript files
     gulp.watch('app/scripts/**/*.coffee', ['coffee', 'scripts']);
-
 
     // Watch .js files
     gulp.watch('app/scripts/**/*.js', ['scripts']);
