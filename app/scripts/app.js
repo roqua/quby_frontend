@@ -9,7 +9,14 @@ var questionnaire = window.questionnaire = {"key":"honos","title":"HoNOS","descr
 
 var QubyApp = React.createClass({
   getInitialState: function() {
-    return {currentPanel: 0};
+    return {currentPanel: 0, values: {}};
+  },
+
+  setValue: function(key, value) {
+    var newValues = {};
+    for (var existingKey in this.state.values) { newValues[existingKey] = this.state.values[existingKey] };
+    newValues[key] = value;
+    this.setState({values: newValues});
   },
 
   previousPanel: function() {
@@ -23,7 +30,7 @@ var QubyApp = React.createClass({
   render: function() {
     return (
       <div>
-        <Panels panels={this.props.questionnaire.panels} index={this.state.currentPanel} />
+        <Panels panels={this.props.questionnaire.panels} index={this.state.currentPanel} values={this.state.values} setValue={this.setValue} />
         <Navigation prev={this.previousPanel} next={this.nextPanel} />
       </div>
     );
