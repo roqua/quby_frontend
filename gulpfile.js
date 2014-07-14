@@ -1,6 +1,7 @@
 'use strict';
 
 var gulp = require('gulp');
+var gutil = require('gulp-util');
 
 // Load plugins
 var $ = require('gulp-load-plugins')();
@@ -37,10 +38,9 @@ gulp.task('coffee', function () {
 // Scripts
 gulp.task('scripts', function () {
     return gulp.src('app/scripts/app.js')
-        .pipe($.browserify({
-            insertGlobals: true,
-            transform: ['reactify']
-        }))
+        .pipe($.browserify({insertGlobals: true}))
+        .on('error', gutil.log)
+        .on('error', gutil.beep)
         .pipe(gulp.dest('dist/scripts'))
         .pipe($.size())
         .pipe($.connect.reload());

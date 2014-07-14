@@ -1,7 +1,4 @@
-/** @jsx React.DOM */
-
 var React = window.React = require('react'),
-    Navigation = require("./ui/navigation"),
     Panels = require("./ui/panels"),
     mountNode = document.getElementById("quby-app");
 
@@ -9,7 +6,7 @@ var questionnaire = window.questionnaire = {"key":"honos","title":"HoNOS","descr
 
 var QubyApp = React.createClass({
   getInitialState: function() {
-    return {currentPanel: 0, values: {}};
+    return {currentPanel: 2, values: {}};
   },
 
   setValue: function(key, value) {
@@ -28,15 +25,12 @@ var QubyApp = React.createClass({
   },
 
   render: function() {
-    return (
-      <div>
-        <Panels panels={this.props.questionnaire.panels} index={this.state.currentPanel} values={this.state.values} setValue={this.setValue} />
-        <Navigation prev={this.previousPanel} next={this.nextPanel} />
-      </div>
-    );
+    return React.DOM.div({}, [
+      Panels({panels: this.props.questionnaire.panels, index: this.state.currentPanel,
+              values: this.state.values, setValue: this.setValue})
+    ]);
   }
 });
-
 
 React.renderComponent(
     QubyApp({questionnaire: questionnaire}),

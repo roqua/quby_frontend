@@ -1,13 +1,9 @@
-/** @jsx React.DOM */
-
 var Navigation = React.createClass({
   render: function() {
-    return (
-      <div>
-        <button onClick={this.props.prev}>Previous</button>
-        <button onClick={this.props.next}>Next</button>
-      </div>
-    );
+    return React.DOM.div({}, [
+        React.DOM.button({onClick: this.props.prev}, "Previous"),
+        React.DOM.button({onClick: this.props.next}, "Next")
+    ]);
   }
 });
 
