@@ -19,22 +19,18 @@ Panels = React.createClass
 
 Panel = React.createClass
   render: () ->
-    values     = @props.values
-    setValue   = @props.setValue
-    createItem = (item) ->
-      if item.class == "Quby::Questionnaires::Entities::Text"
-        Text(item: item)
-      else if item.class == "Quby::Questionnaires::Entities::Questions::RadioQuestion"
-        Questions.Radio(key: item.key, item: item, value: values[item.key], setValue: setValue)
-      else
-        React.DOM.div({}, "Unknown item type: " + item.class)
-
     classes = "panel"
     if @props.current
       classes += " current"
 
     React.DOM.div {className: classes},
-      @props.panel.items.map(createItem)
+      for item in @props.panel.items
+        if item.class == "Quby::Questionnaires::Entities::Text"
+          Text(item: item)
+        else if item.class == "Quby::Questionnaires::Entities::Questions::RadioQuestion"
+          Questions.Radio(key: item.key, item: item, value: @props.values[item.key], setValue: @props.setValue)
+        else
+          React.DOM.div({}, "Unknown item type: " + item.class)
 
 Text = React.createClass
   render: () ->

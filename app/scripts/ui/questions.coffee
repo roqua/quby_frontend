@@ -3,20 +3,21 @@ RadioQuestion = React.createClass
     () => @props.setValue(@props.item.key, option.key);
 
   render: () ->
-    name         = "answer[" + this.props.item.key + "]"
-    value        = this.props.value;
-    selectOption = this.selectOption;
-    createOption = (option) ->
-      RadioOption(name: name, selected: (value == option.key), value: option.key, label: option.description, onChange: selectOption(option))
+    name         = "answer[" + @props.item.key + "]"
+    value        = @props.value;
+    selectOption = @selectOption;
+    createOption = (option) =>
 
     React.DOM.div {},
-      React.DOM.div({}, this.props.item.title)
-      this.props.item.options.map(createOption)
+      React.DOM.div {}, @props.item.title
+      for option in @props.item.options
+        RadioOption name: name, value: option.key, label: option.description, selected: (value == option.key), onChange: selectOption(option)
 
 RadioOption = React.createClass
   render: () ->
     React.DOM.div {},
-      React.DOM.input({name: this.props.name, type: "radio", checked: this.props.selected, onChange: this.props.onChange}),
-      React.DOM.label({}, this.props.label)
+      React.DOM.input name: @props.name, type: "radio", checked: @props.selected, onChange: @props.onChange
+      React.DOM.label {}, @props.label
 
-module.exports = {Radio: RadioQuestion};
+module.exports =
+  Radio: RadioQuestion
