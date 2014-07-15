@@ -1,10 +1,11 @@
-React     = window.React = require('react')
+react     = require('react')
+html      = react.DOM
 Panels    = require("./ui/panels")
 mountNode = document.getElementById("quby-app");
 
 questionnaire = require('./example-questionnaire')
 
-QubyApp = React.createClass
+QubyApp = react.createClass
   getInitialState: () ->
     values: {}
 
@@ -16,11 +17,14 @@ QubyApp = React.createClass
     @setState values: newValues
 
   render: () ->
-    React.DOM.div {},
+    html.div {},
       Panels
         panels: @props.questionnaire.panels
         index: @state.currentPanel
         values: @state.values
         setValue: @setValue
+
+# So that React Devtools know that we've loaded React
+window.React = react
 
 React.renderComponent(QubyApp(questionnaire: questionnaire), mountNode)

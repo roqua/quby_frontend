@@ -1,9 +1,12 @@
-Navigation = React.createClass
+react = require 'react'
+html  = react.DOM
+
+Navigation = react.createClass
   render: () ->
-    React.DOM.div {},
-      React.DOM.button onClick: @props.prev,
+    html.div {},
+      html.button onClick: @props.prev,
         "Previous"
-      React.DOM.button onClick: @props.next,
+      html.button onClick: @props.next,
         "Next"
 
 module.exports = Navigation

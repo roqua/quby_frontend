@@ -1,4 +1,7 @@
-RadioQuestion = React.createClass
+react = require 'react'
+html  = react.DOM
+
+RadioQuestion = react.createClass
   selectOption: (option) ->
     () => @props.setValue(@props.item.key, option.key);
 
@@ -8,16 +11,16 @@ RadioQuestion = React.createClass
     selectOption = @selectOption;
     createOption = (option) =>
 
-    React.DOM.div {},
-      React.DOM.div {}, @props.item.title
+    html.div {},
+      html.div {}, @props.item.title
       for option in @props.item.options
         RadioOption name: name, value: option.key, label: option.description, selected: (value == option.key), onChange: selectOption(option)
 
-RadioOption = React.createClass
+RadioOption = react.createClass
   render: () ->
-    React.DOM.div {},
-      React.DOM.input name: @props.name, type: "radio", checked: @props.selected, onChange: @props.onChange
-      React.DOM.label {}, @props.label
+    html.div {},
+      html.input name: @props.name, type: "radio", checked: @props.selected, onChange: @props.onChange
+      html.label {}, @props.label
 
 module.exports =
   Radio: RadioQuestion
