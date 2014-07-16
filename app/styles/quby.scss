@@ -1,3 +1,7 @@
+@import "reset";
+@import "bourbon";
+@import "neat";
+
 .browsehappy {
     margin: 0.2em 0;
     background: #ccc;
@@ -5,17 +9,17 @@
     padding: 0.2em 0;
 }
 
-/* Space out content a bit */
-body {
-    padding-top: 20px;
-    padding-bottom: 20px;
+.panels {
+  @include outer-container;
 }
 
 .panel {
-    border: 4px solid purple;
-    margin-bottom: 10px;
 }
 
 .panel.current {
     background: yellow;
+}
+
+.navigation {
+  background: yellow;
 }
