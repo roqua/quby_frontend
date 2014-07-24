@@ -12,6 +12,14 @@
     "react": "./app/bower_components/react/react-with-addons.js",
     "jquery": "./app/bower_components/jquery/dist/jquery.js"
   },
+  "browserify-shim": {
+    "plugin": {
+      "exports": "plugin",
+      "depends": [
+        "jquery:$"
+      ]
+    }
+  },
   "devDependencies": {
     "gulp": "~3.8.0",
     "gulp-util": "~2.2.9",

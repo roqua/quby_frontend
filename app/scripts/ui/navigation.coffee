@@ -2,6 +2,8 @@ react = require 'react'
 html  = react.DOM
 
 Navigation = react.createClass
+  displayName: 'Navigation'
+
   render: () ->
     html.div {className: 'navigation'},
       html.input className: 'nav-button nav-button-prev', type: 'submit', value: "Previous", onClick: @props.prev

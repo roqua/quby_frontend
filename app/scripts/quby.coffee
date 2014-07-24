@@ -7,6 +7,8 @@ mountNode = document.getElementById("quby-app");
 questionnaire = {panels: [{items: []}]}
 
 QubyApp = react.createClass
+  displayName: 'QubyApp'
+
   getInitialState: () ->
     values: {}
 
