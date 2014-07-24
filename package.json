@@ -1,10 +1,6 @@
 {
   "name": "quby",
   "version": "0.0.0",
-  "dependencies": {
-    "react": "^0.10.0",
-    "jquery": "~2.1.0"
-  },
   "browserify": {
     "transform": [
       "browserify-shim",
@@ -12,13 +8,9 @@
       "hbsfy"
     ]
   },
-  "browserify-shim": {
-    "plugin": {
-      "exports": "plugin",
-      "depends": [
-        "jquery:$"
-      ]
-    }
+  "browser": {
+    "react": "./app/bower_components/react/react-with-addons.js",
+    "jquery": "./app/bower_components/jquery/dist/jquery.js"
   },
   "devDependencies": {
     "gulp": "~3.8.0",

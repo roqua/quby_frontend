@@ -2,6 +2,8 @@
   "name": "quby",
   "version": "0.0.1",
   "dependencies": {
+    "react": "^0.11.0",
+    "jquery": "~2.1.0",
     "modernizr": "^2.8.3",
     "bourbon": "~3.2.0",
     "neat": "~1.6.0"
