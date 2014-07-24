@@ -1,0 +1,7 @@
+.panels {
+  @include outer-container;
+}
+
+.panel {
+  @include pad()
+}

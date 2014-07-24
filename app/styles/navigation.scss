@@ -1,0 +1,26 @@
+body {
+  margin-bottom: 3em;
+}
+
+.navigation {
+  position: fixed;
+  height: 3em;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: yellow;
+}
+
+.nav-button {
+  height: 3em;
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+
+.nav-button-prev {
+  width: 30%;
+}
+
+.nav-button-next {
+  width: 70%;
+}

@@ -23,8 +23,6 @@ Panels = react.createClass
 Panel = react.createClass
   render: () ->
     classes = "panel"
-    if @props.current
-      classes += " current"
 
     html.div {className: classes},
       for item in @props.panel.items
@@ -38,6 +36,7 @@ Panel = react.createClass
 Text = react.createClass
   render: () ->
     html.div
+      className: "item item-text"
       dangerouslySetInnerHTML: {__html: @props.item.text}
 
 module.exports = Panels;

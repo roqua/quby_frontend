@@ -4,8 +4,7 @@ html  = react.DOM
 Navigation = react.createClass
   render: () ->
     html.div {className: 'navigation'},
-      html.input type: 'submit', value: "Previous", onClick: @props.prev
-      html.input type: 'submit', value: "Next", onClick: @props.next
-
+      html.input className: 'nav-button nav-button-prev', type: 'submit', value: "Previous", onClick: @props.prev
+      html.input className: 'nav-button nav-button-next', type: 'submit', value: "Next", onClick: @props.next
 
 module.exports = Navigation

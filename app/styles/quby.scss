@@ -1,6 +1,12 @@
+// Library imports
 @import "reset";
 @import "bourbon";
 @import "neat";
+
+// Own styles
+@import "navigation";
+@import "panels";
+@import "items";
 
 .browsehappy {
     margin: 0.2em 0;
@@ -9,17 +15,3 @@
     padding: 0.2em 0;
 }
 
-.panels {
-  @include outer-container;
-}
-
-.panel {
-}
-
-.panel.current {
-    background: yellow;
-}
-
-.navigation {
-  background: yellow;
-}

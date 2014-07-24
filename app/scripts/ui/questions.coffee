@@ -11,7 +11,7 @@ RadioQuestion = react.createClass
     selectOption = @selectOption;
     createOption = (option) =>
 
-    html.div {},
+    html.div {className: 'item item-question'},
       html.div {}, @props.item.title
       for option in @props.item.options
         RadioOption name: name, value: option.key, label: option.description, selected: (value == option.key), onChange: selectOption(option)

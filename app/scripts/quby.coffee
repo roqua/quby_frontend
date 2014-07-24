@@ -1,9 +1,10 @@
 react     = require('react')
+$         = require('jquery')
 html      = react.DOM
 Panels    = require("./ui/panels")
 mountNode = document.getElementById("quby-app");
 
-questionnaire = require('./example-questionnaire')
+questionnaire = {panels: [{items: []}]}
 
 QubyApp = react.createClass
   getInitialState: () ->
@@ -27,4 +28,6 @@ QubyApp = react.createClass
 # So that React Devtools know that we've loaded React
 window.React = react
 
-React.renderComponent(QubyApp(questionnaire: questionnaire), mountNode)
+$.getJSON "/questionnaires/sipp.json", (data) =>
+  window.questionnaire = data
+  React.renderComponent(QubyApp(questionnaire: data), mountNode)
