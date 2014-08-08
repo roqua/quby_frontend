@@ -30,6 +30,8 @@ Panel = React.createClass
         <Text key={"text-#{idx}"} item={item} />
       else if item.class == "Quby::Questionnaires::Entities::Questions::RadioQuestion"
         <Questions.Radio key={item.key} item={item} value={@props.values[item.key]} setValue={@props.setValue} />
+      else if item.class == "Quby::Questionnaires::Entities::Questions::StringQuestion"
+        <Questions.String key={item.key} item={item} value={@props.values[item.key]} setValue={@props.setValue} />
       else
         <div key={"unknown-#{idx}"}>
           "Unknown item type: #{item.class}"

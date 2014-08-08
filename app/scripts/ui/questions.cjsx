@@ -29,5 +29,18 @@ RadioOption = React.createClass
       <label htmlFor={id}>{@props.label}</label>
     </div>
 
+StringQuestion = React.createClass
+  displayName: 'String'
+
+  handleChange: (event) ->
+    @props.setValue(@props.item.key, event.target.value)
+
+  render: () ->
+    <div className="item item-question">
+      <div>{@props.item.title}</div>
+      <input name={@props.item.key} type="text" value={@props.value} onChange={@handleChange} />
+    </div>
+
 module.exports =
   Radio: RadioQuestion
+  String: StringQuestion

@@ -27,6 +27,8 @@ module.exports = {
       extensions: ['', '.js', '.cjsx', '.coffee']
     },
 
+    devtool: "source-map",
+
     module: {
       loaders: [
         { test: /\.css$/, loaders: ['style', 'css']},

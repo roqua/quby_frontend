@@ -8,10 +8,9 @@ react     = require('react')
 # So that React Devtools know that we've loaded React
 window.React = react
 
-QubyApp   = require './app'
+QubyApp       = require './app'
+mountNode     = document.getElementById("quby-app");
 
-mountNode = document.getElementById("quby-app");
-questionnaire = {panels: [{items: []}]}
-$.getJSON "/questionnaires/sipp.json", (data) =>
+$.getJSON "/questionnaires/Voorbeeldvragenlijst.json", (data) =>
   window.questionnaire = data
   React.renderComponent(QubyApp(questionnaire: data), mountNode)
