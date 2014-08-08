@@ -1,10 +1,9 @@
-react = require 'react'
-html  = react.DOM
+html  = React.DOM
 
 Navigation = require("./navigation")
 Questions  = require("./questions")
 
-Panels = react.createClass
+Panels = React.createClass
   displayName: 'Panels'
 
   getInitialState: () ->
@@ -22,7 +21,7 @@ Panels = react.createClass
       Panel(panel: @props.panels[@state.currentPanel], values: @props.values, setValue: @props.setValue)
       Navigation(prev: @previousPanel, next: @nextPanel)
 
-Panel = react.createClass
+Panel = React.createClass
   displayName: 'Panel'
 
   render: () ->
@@ -37,7 +36,7 @@ Panel = react.createClass
         else
           html.div(key: "unknown-#{idx}", "Unknown item type: " + item.class)
 
-Text = react.createClass
+Text = React.createClass
   displayName: 'Text'
 
   render: () ->

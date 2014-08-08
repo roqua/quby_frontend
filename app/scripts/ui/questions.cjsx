@@ -1,7 +1,6 @@
-react = require 'react'
-html  = react.DOM
+html  = React.DOM
 
-RadioQuestion = react.createClass
+RadioQuestion = React.createClass
   displayName: 'RadioQuestion'
 
   selectOption: (option) ->
@@ -18,7 +17,7 @@ RadioQuestion = react.createClass
       for option in @props.item.options
         RadioOption name: name, key: option.key, label: option.description, selected: (value == option.key), onChange: selectOption(option)
 
-RadioOption = react.createClass
+RadioOption = React.createClass
   displayName: 'RadioOption'
 
   render: () ->

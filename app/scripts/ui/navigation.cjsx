@@ -1,7 +1,6 @@
-react = require 'react'
-html  = react.DOM
+html  = React.DOM
 
-Navigation = react.createClass
+Navigation = React.createClass
   displayName: 'Navigation'
 
   render: () ->
