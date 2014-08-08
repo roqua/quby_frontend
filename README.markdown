@@ -11,6 +11,8 @@ npm install -g bower
 npm install
 bower install
 
+gem install sass -v 3.3.7
+
 gulp
 ```
 
