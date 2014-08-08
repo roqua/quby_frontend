@@ -1,5 +1,3 @@
-html  = React.DOM
-
 RadioQuestion = React.createClass
   displayName: 'RadioQuestion'
 
@@ -12,18 +10,24 @@ RadioQuestion = React.createClass
     selectOption = @selectOption;
     createOption = (option) =>
 
-    html.div {className: 'item item-question'},
-      html.div {}, @props.item.title
-      for option in @props.item.options
-        RadioOption name: name, key: option.key, label: option.description, selected: (value == option.key), onChange: selectOption(option)
+    options = for option in @props.item.options
+      <RadioOption name={name} key={option.key} label={option.description} selected={value == option.key} onChange={selectOption(option)} />
+
+    <div className="item item-question">
+      <div>{@props.item.title}</div>
+      {options}
+    </div>
 
 RadioOption = React.createClass
   displayName: 'RadioOption'
 
   render: () ->
-    html.div {},
-      html.input name: @props.name, type: "radio", checked: @props.selected, onChange: @props.onChange
-      html.label {}, @props.label
+    id = "#{@props.name}[#{@props.key}]"
+
+    <div>
+      <input id={id} name={@props.name} type={"radio"} checked={@props.selected} onChange={@props.onChange} />
+      <label htmlFor={id}>{@props.label}</label>
+    </div>
 
 module.exports =
   Radio: RadioQuestion
