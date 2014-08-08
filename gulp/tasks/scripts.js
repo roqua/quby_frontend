@@ -1,45 +1,33 @@
 var gulp             = require('gulp');
+var gutil            = require('gulp-util');
 var webpack          = require('webpack');
-var webpackDevServer = require('webpack-dev-server');
-var webpackConfig    = require('../../webpack.config.js');
+var _                = require('underscore');
+var webpackConfig    = require('../config/webpack.config.js');
 var bundleLogger     = require('../util/bundleLogger');
 var handleErrors     = require('../util/handleErrors');
 
+gulp.task("scripts", function() {
+  // Modify some webpack config options.
+  var config = _.extend({}, webpackConfig);
 
-// gulp.task('browserify', function() {
+  // Don't use react-hot-loader for the production build.
+  config.entry = _.last(config.entry);
+  config.module.loaders[1] = { test: /\.cjsx$/,   loaders: ['coffee', 'cjsx']};
+  config.module.loaders[2] = { test: /\.coffee$/, loaders: ['coffee']};
+  config.plugins = [];
 
-// 	var bundleMethod = global.isWatching ? watchify : browserify;
+  config.plugins = config.plugins.concat([
+    // This has effect on the react lib size.
+    new webpack.DefinePlugin({"process.env": {NODE_ENV: JSON.stringify("production")}}),
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.UglifyJsPlugin(),
+  ]);
 
-// 	var bundler = bundleMethod({
-// 		// Specify the entry point of your app
-// 		entries: ['./app/scripts/quby.coffee'],
-// 		// Add file extentions to make optional in your requires
-// 		extensions: ['.coffee', '.hbs']
-// 	});
+  // Run webpack.
+  webpack(config, function(err, stats) {
+    gutil.log("[scripts:build]", stats.toString({colors: true}));
+  });
 
-// 	var bundle = function() {
-// 		// Log when bundling starts
-// 		bundleLogger.start();
+});
 
-// 		return bundler
-// 			// Enable source maps!
-// 			.bundle({debug: true})
-// 			// Report compile errors
-// 			.on('error', handleErrors)
-// 			// Use vinyl-source-stream to make the
-// 			// stream gulp compatible. Specifiy the
-// 			// desired output filename here.
-// 			.pipe(source('quby.js'))
-// 			// Specify the output destination
-// 			.pipe(gulp.dest('./build/'))
-// 			// Log when bundling completes!
-// 			.on('end', bundleLogger.end);
-// 	};
 
-// 	if(global.isWatching) {
-// 		// Rebundle with watchify on changes.
-// 		bundler.on('update', bundle);
-// 	}
-
-// 	return bundle();
-// });
