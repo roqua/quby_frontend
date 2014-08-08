@@ -1,3 +1,7 @@
+# Load css first thing. It gets injected in the <head> in a <style> element by
+# the Webpack style-loader.
+require '../../build/quby.css'
+
 $         = require('jquery')
 
 react     = require('react')
