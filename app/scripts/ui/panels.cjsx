@@ -8,11 +8,12 @@ Panels = React.createClass
     {currentPanel: 0}
 
   previousPanel: () ->
-    @setState currentPanel: @state.currentPanel - 1
+    if @state.currentPanel > 0
+      @setState currentPanel: @state.currentPanel - 1
 
   nextPanel: () ->
-    @setState
-      currentPanel: @state.currentPanel + 1
+    if @state.currentPanel < @props.panels.length
+      @setState currentPanel: @state.currentPanel + 1
 
   render: () ->
     <div className="panels">
